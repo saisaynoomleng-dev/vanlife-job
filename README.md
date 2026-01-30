@@ -10,11 +10,9 @@
 
 ### Project Timeline
 
-| -Date-    | Description        |
-| --------- | ------------------ |
-| 1/30/2026 | - Product Research |
-|           | - Project Setup    |
-|           |
+| Date      | Description                                              |
+| --------- | -------------------------------------------------------- |
+| 1/30/2026 | - Product Research<br> - Project SetUp<br> - Development |
 
 ---
 
