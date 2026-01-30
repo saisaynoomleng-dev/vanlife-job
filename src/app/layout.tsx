@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { inter } from "@/lib/fonts";
+import type { Metadata } from 'next';
+import './globals.css';
+import { inter } from '@/lib/fonts';
+import { SanityLive } from '@/sanity/lib/live';
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | VanLife",
-    default: "VanLife",
+    template: '%s | VanLife',
+    default: 'VanLife',
   },
   description:
-    "Book reliable camper vans and travel vans for your next road trip. VanLife makes van rentals simple, affordable, and adventure-ready. Browse vans, choose your dates, and hit the road today.",
+    'Book reliable camper vans and travel vans for your next road trip. VanLife makes van rentals simple, affordable, and adventure-ready. Browse vans, choose your dates, and hit the road today.',
 };
 
 export default function RootLayout({
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        {children}
+        <SanityLive />
+      </body>
     </html>
   );
 }
