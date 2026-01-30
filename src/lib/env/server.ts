@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import z from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import z from 'zod';
 
 export const env = createEnv({
   emptyStringAsUndefined: true,
@@ -12,6 +12,8 @@ export const env = createEnv({
     STRIPE_PUBLISHABLE_KEY: z.string(),
     STRIPE_SECRET_KEY: z.string(),
     DATABASE_URL: z.string(),
+    CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
+    SANITY_WEBHOOK_SECRET: z.string(),
   },
   experimental__runtimeEnv: process.env,
 });

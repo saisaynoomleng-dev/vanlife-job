@@ -20,7 +20,7 @@ export const updatedAt = t
 
 export const id = t.uuid('id').primaryKey().defaultRandom();
 
-export const VanType = t.pgEnum('VanType', ['SIMPLE', 'RUGGED', 'LUXURY']);
+export const VanType = t.pgEnum('VanType', ['simple', 'rugged', 'luxury']);
 
 export const BookingStatus = t.pgEnum('BookingStatus', [
   'PENDING',
@@ -32,10 +32,10 @@ export const BookingStatus = t.pgEnum('BookingStatus', [
 export const VanTable = t.pgTable('vans', {
   id,
   name: t.varchar('name', { length: 255 }).notNull(),
-  sanityId: t.text('sanity_id').notNull(),
+  sanityId: t.text('sanity_id').notNull().unique(),
   pricePerDayInCents: t.integer('price_per_day_in_cents').notNull(),
   isAvailable: t.boolean('is_available').default(true).notNull(),
-  type: VanType('type').default('SIMPLE').notNull(),
+  type: VanType('type').default('simple').notNull(),
   createdAt,
   updatedAt,
 });
