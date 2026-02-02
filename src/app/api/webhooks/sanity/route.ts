@@ -13,11 +13,11 @@ type WebhookPayload = {
   mainImage: string;
 };
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const operation = req.headers.get('sanity-operation');
 
   try {
-    if (!env.SANITY_WEBHOOK_SECRET) {
+    if (!env.SANITY_REVALIDATION_SECRET) {
       return new Response('Missing Webhook secret', {
         status: 500,
       });
@@ -25,7 +25,7 @@ export default async function POST(req: NextRequest) {
 
     const { isValidSignature, body } = await parseBody<WebhookPayload>(
       req,
-      env.SANITY_WEBHOOK_SECRET,
+      env.SANITY_REVALIDATION_SECRET,
     );
 
     if (!isValidSignature) {
@@ -41,38 +41,35 @@ export default async function POST(req: NextRequest) {
     }
 
     switch (operation) {
-      case 'create':
-        {
-          await db
-            .insert(VanTable)
-            .values({
-              name: body.name,
-              pricePerDayInCents: Math.round(body.pricePerDay * 100),
-              sanityId: body._id,
-              type: body.type as any,
-            })
-            .onConflictDoNothing({ target: VanTable.sanityId });
-        }
+      case 'create': {
+        await db
+          .insert(VanTable)
+          .values({
+            name: body.name,
+            pricePerDayInCents: Math.round(body.pricePerDay * 100),
+            sanityId: body._id,
+            type: body.type as any,
+          })
+          .onConflictDoNothing({ target: VanTable.sanityId });
         break;
+      }
 
-      case 'update':
-        {
-          await db
-            .update(VanTable)
-            .set({
-              name: body.name,
-              pricePerDayInCents: Math.round(body.pricePerDay * 100),
-              type: body.type as any,
-            })
-            .where(eq(VanTable.sanityId, body._id));
-        }
+      case 'update': {
+        await db
+          .update(VanTable)
+          .set({
+            name: body.name,
+            pricePerDayInCents: Math.round(body.pricePerDay * 100),
+            type: body.type as any,
+          })
+          .where(eq(VanTable.sanityId, body._id));
         break;
+      }
 
-      case 'delete':
-        {
-          await db.delete(VanTable).where(eq(VanTable.sanityId, body._id));
-        }
+      case 'delete': {
+        await db.delete(VanTable).where(eq(VanTable.sanityId, body._id));
         break;
+      }
 
       default: {
         return new Response(

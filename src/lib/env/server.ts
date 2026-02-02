@@ -13,7 +13,7 @@ export const env = createEnv({
     STRIPE_SECRET_KEY: z.string(),
     DATABASE_URL: z.string(),
     CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
-    SANITY_WEBHOOK_SECRET: z.string(),
+    SANITY_REVALIDATION_SECRET: z.string(),
   },
   experimental__runtimeEnv: process.env,
 });
