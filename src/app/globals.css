@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -145,4 +145,28 @@
   /* breakpoint */
   --breakpoint-lg: 1000px;
   --breakpoint-md: 760px;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-brand-white text-brand-black-200 leading-normal tracking-normal min-h-screen overflow-x-hidden text-fs-400 font-inter;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance tracking-tight leading-0;
+  }
+  p {
+    @apply text-pretty;
+  }
+}
+
+@utility homeBg {
+  @apply bg-[url(/home-hero.png)] bg-no-repeat bg-cover;
 }
