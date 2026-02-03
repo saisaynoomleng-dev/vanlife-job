@@ -24,3 +24,10 @@ export type SubmitButtonProps = {
   className?: string;
   children: React.ReactNode;
 };
+
+// Prev Newsletter Action Props
+export type PrevContactActionProps = {
+  status: string;
+  message: string;
+  field?: string;
+};
