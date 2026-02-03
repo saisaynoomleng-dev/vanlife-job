@@ -12,3 +12,15 @@ export type CTAProps = {
   href: string;
   children: React.ReactNode;
 };
+
+// Prev Newsletter Action Props
+export type PrevNewsletterActionProps = {
+  status: string;
+  message: string;
+};
+
+// Submit Button Props
+export type SubmitButtonProps = {
+  className?: string;
+  children: React.ReactNode;
+};
