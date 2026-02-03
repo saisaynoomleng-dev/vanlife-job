@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { inter } from '@/lib/fonts';
 import { SanityLive } from '@/sanity/lib/live';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased`}>
         {children}
         <SanityLive />
+        <Toaster theme="system" position="top-center" richColors />
       </body>
     </html>
   );
