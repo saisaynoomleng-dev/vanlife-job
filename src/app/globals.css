@@ -172,7 +172,7 @@
 }
 
 @utility formLabel {
-  @apply after:absolute after:content-["*"] after:text-red-500 after:ml-0.5;
+  @apply after:absolute after:content-["*"] after:text-red-500 after:ml-0.5 block;
 }
 
 @utility form-error-message {
