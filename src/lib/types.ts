@@ -1,3 +1,5 @@
+import { ALL_VANS_QUERYResult } from '@/sanity/types';
+
 // Bounded Types
 export type BoundedProps = {
   children: React.ReactNode;
@@ -30,4 +32,15 @@ export type PrevContactActionProps = {
   status: string;
   message: string;
   field?: string;
+};
+
+// Van Card Props
+export type VanCardProps = NonNullable<ALL_VANS_QUERYResult['vans']>[number] & {
+  className?: string;
+};
+
+// Van Type Text Props
+export type VanTypeTextProps = {
+  type: NonNullable<ALL_VANS_QUERYResult['vans']>[number]['type'];
+  className?: string;
 };

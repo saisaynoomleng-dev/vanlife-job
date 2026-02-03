@@ -14,6 +14,7 @@ const SubmitButton = ({ className, children }: SubmitButtonProps) => {
       type="submit"
       className={clsx(
         'bg-brand-orange-400 hover:bg-brand-orange-400/80 cursor-pointer',
+        className,
       )}
     >
       {pending ? <LoadingSpinner /> : <span>{children}</span>}

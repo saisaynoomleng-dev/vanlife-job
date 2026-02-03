@@ -1,5 +1,12 @@
 import Bounded from '@/components/Bounded';
 import ContactForm from '@/components/ContactForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact VanLife – Get Help With Your Camper Van Rental',
+  description:
+    'Have questions about renting a camper van or planning your trip? Contact the VanLife team for support, booking help, or general inquiries. We’re here to help you hit the road with confidence.',
+};
 
 const ContactPage = () => {
   return (
