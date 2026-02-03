@@ -12,3 +12,7 @@ export const formatCurrency = (price: number) => {
 export const formatUppercase = (text: string) => {
   return text.toUpperCase();
 };
+
+export const formatSlug = (slug: string) => {
+  return slug.replaceAll(/-/g, ' ');
+};
