@@ -39,7 +39,7 @@ const VanPage = async ({
 
   const { data: vans } = await sanityFetch({
     query: ALL_VANS_QUERY,
-    params: { startIndex, endIndex },
+    params: { startIndex, endIndex, type: type ?? null },
   });
 
   const totalPages = Math.ceil(vans.total / totalVanPerPage);

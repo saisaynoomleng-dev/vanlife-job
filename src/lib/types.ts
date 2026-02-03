@@ -44,3 +44,10 @@ export type VanTypeTextProps = {
   type: NonNullable<ALL_VANS_QUERYResult['vans']>[number]['type'];
   className?: string;
 };
+
+// Back to Props
+export type BackToProps = {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+};
