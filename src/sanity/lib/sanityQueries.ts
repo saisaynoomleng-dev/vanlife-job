@@ -8,7 +8,11 @@ export const ALL_VANS_QUERY = defineQuery(`{
   name,
   slug,
   pricePerDay,
-  type
+  type,
+  mainImage{
+    alt,
+    asset->{url}
+  }
  },
   "total": count(*[_type == 'van'
  && defined(slug.current)])

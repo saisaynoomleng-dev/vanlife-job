@@ -39,6 +39,7 @@ export const handleNewsletterForm = async (
       message: 'Thank you for your subscription!',
     };
   } catch (err) {
+    console.error(err);
     return {
       status: 'error',
       message: 'Something went wrong! Try again later!',

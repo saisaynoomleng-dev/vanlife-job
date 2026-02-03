@@ -212,13 +212,19 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/sanityQueries.ts
 // Variable: ALL_VANS_QUERY
-// Query: {  "vans": *[_type == 'van' && defined(slug.current)] [$startIndex...$endIndex] | order(name){  name,  slug,  pricePerDay,  type },  "total": count(*[_type == 'van' && defined(slug.current)])}
+// Query: {  "vans": *[_type == 'van' && defined(slug.current)] [$startIndex...$endIndex] | order(name){  name,  slug,  pricePerDay,  type,  mainImage{    alt,    asset->{url}  } },  "total": count(*[_type == 'van' && defined(slug.current)])}
 export type ALL_VANS_QUERYResult = {
   vans: Array<{
     name: string | null;
     slug: Slug | null;
     pricePerDay: number | null;
     type: 'luxury' | 'rugged' | 'simple' | null;
+    mainImage: {
+      alt: string | null;
+      asset: {
+        url: string | null;
+      } | null;
+    } | null;
   }>;
   total: number;
 };
@@ -235,7 +241,7 @@ export type VAN_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '{\n  "vans": *[_type == \'van\'\n && defined(slug.current)]\n [$startIndex...$endIndex]\n | order(name){\n  name,\n  slug,\n  pricePerDay,\n  type\n },\n  "total": count(*[_type == \'van\'\n && defined(slug.current)])\n}': ALL_VANS_QUERYResult;
+    '{\n  "vans": *[_type == \'van\'\n && defined(slug.current)]\n [$startIndex...$endIndex]\n | order(name){\n  name,\n  slug,\n  pricePerDay,\n  type,\n  mainImage{\n    alt,\n    asset->{url}\n  }\n },\n  "total": count(*[_type == \'van\'\n && defined(slug.current)])\n}': ALL_VANS_QUERYResult;
     "*[_type == 'van'\n && slug.current == $slug][0]\n {\n  name,\n  slug,\n  pricePerDay,\n  type\n }": VAN_QUERYResult;
   }
 }
