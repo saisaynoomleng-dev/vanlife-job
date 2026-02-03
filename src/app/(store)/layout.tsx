@@ -1,3 +1,5 @@
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { ClerkProvider } from '@clerk/nextjs';
 
 export default function StoreLayout({
@@ -5,7 +7,11 @@ export default function StoreLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <main>{children}</main>
+      <main>
+        <Header />
+        {children}
+        <Footer />
+      </main>
     </ClerkProvider>
   );
 }
